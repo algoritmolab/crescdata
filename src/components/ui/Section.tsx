@@ -50,7 +50,7 @@ export function SectionHeading({
   return (
     <div
       className={cn(
-        "max-w-2xl",
+        "max-w-4xl",
         align === "center" && "mx-auto text-center",
       )}
     >
@@ -59,7 +59,7 @@ export function SectionHeading({
           className={cn(
             // Orange eyebrow — one of the small, deliberate accent moments.
             "text-xs font-semibold uppercase tracking-[0.14em]",
-            onDark ? "text-accent-300" : "text-accent-600",
+            onDark ? "text-accent-300" : "text-label",
           )}
         >
           {eyebrow}
@@ -76,7 +76,9 @@ export function SectionHeading({
       {intro && (
         <p
           className={cn(
-            "mt-4 text-lg leading-relaxed",
+            // Measure on the paragraph itself, so 68ch resolves against this
+            // element's font-size rather than the wrapper's.
+            "mt-4 max-w-[68ch] text-lg leading-relaxed",
             onDark ? "text-brand-50" : "text-ink-soft",
           )}
         >

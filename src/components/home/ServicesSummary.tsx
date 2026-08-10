@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { Button } from "@/components/ui/Button";
-import { Icon } from "@/components/ui/Icon";
+import { ArrowIcon } from "@/components/ui/ArrowLink";
 import { servicesSummary } from "@/content/site";
 
 export function ServicesSummary() {
@@ -15,7 +15,7 @@ export function ServicesSummary() {
         />
         <Button href="/services" variant="secondary" className="shrink-0">
           View all services
-          <Icon name="arrow" className="h-4 w-4" />
+          <ArrowIcon />
         </Button>
       </div>
 
@@ -32,12 +32,9 @@ export function ServicesSummary() {
             <p className="mt-2 flex-1 text-sm leading-relaxed text-ink-soft">
               {service.body}
             </p>
-            <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600">
+            <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-700">
               Learn more
-              <Icon
-                name="arrow"
-                className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1"
-              />
+              <ArrowIcon />
             </span>
           </Link>
         ))}

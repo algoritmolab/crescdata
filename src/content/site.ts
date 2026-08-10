@@ -13,7 +13,9 @@ export const logo = crescLogo;
 
 export const site = {
   name: "Cresc Datasoft",
-  tagline: "Supply chain back office for apparel importers",
+  /** Rendered verbatim, lowercase, no spaces. */
+  strapline: "ideate.innovate.deliver",
+  tagline: "Supply chain back office for importers and wholesalers",
   url: "https://www.crescdata.com",
   email: "info@crescdata.com",
 } as const;
@@ -23,12 +25,16 @@ export type NavLink = {
   href: string;
 };
 
+/**
+ * The single definition of nav order. The header (desktop and mobile) and the
+ * footer all map over this, so the order can only ever be changed here.
+ */
 export const navLinks: NavLink[] = [
   { label: "Home", href: "/" },
   { label: "Services", href: "/services" },
-  { label: "About", href: "/about" },
   { label: "Testimonials", href: "/testimonials" },
   { label: "White Papers", href: "/whitepapers" },
+  { label: "Case Studies", href: "/case-studies" },
   { label: "Careers", href: "/careers" },
   { label: "Contact", href: "/contact" },
 ];
@@ -36,7 +42,7 @@ export const navLinks: NavLink[] = [
 export type Office = {
   /** Country label shown as the card's eyebrow. */
   region: string;
-  /** Centre name, e.g. "Centre 1". */
+  /** Center name, e.g. "Center 1". */
   name: string;
   /** Optional qualifier, e.g. "Registered office". */
   note?: string;
@@ -48,7 +54,7 @@ export type Office = {
 export const offices: Office[] = [
   {
     region: "India",
-    name: "Centre 1",
+    name: "Center 1",
     note: "Registered office",
     address: [
       "Cresc Datasoft Pvt Ltd",
@@ -61,7 +67,7 @@ export const offices: Office[] = [
   },
   {
     region: "India",
-    name: "Centre 2",
+    name: "Center 2",
     address: [
       "2nd & 3rd Floor, Daffodil, #2/6, 80 Feet Rd",
       "RMV 2nd Stage, Ashwath Nagar",
@@ -73,7 +79,7 @@ export const offices: Office[] = [
   },
   {
     region: "India",
-    name: "Centre 3",
+    name: "Center 3",
     address: [
       "Ground Floor, West Wing, KCT Tech Park",
       "KCT Campus, Thudiyalur Rd",
@@ -93,10 +99,10 @@ export const offices: Office[] = [
 /* ---------------------------------------------------------------- home page */
 
 export const hero = {
-  eyebrow: "Supply chain back office for apparel importers",
+  eyebrow: "Supply chain back office for importers and wholesalers",
   headline: "We run the back office, so you can grow the business.",
   subhead:
-    "From order processing and EDI to import management and full accounting, Cresc Datasoft takes the day-to-day operations off your plate — handled by a team that has spent decades inside the apparel supply chain.",
+    "From order processing and EDI to import management and full accounting, Cresc takes the day-to-day operations off your plate. We work with importers and wholesalers of apparel, home furnishings and consumer products, handled by a team that has spent decades inside US retail supply chains.",
   primaryCta: { label: "Explore our services", href: "/services" },
   secondaryCta: { label: "Get in touch", href: "/contact" },
 } as const;
@@ -110,13 +116,13 @@ export type ValueProp = {
 
 export const whyUs: ValueProp[] = [
   {
-    title: "Built for apparel importers",
-    body: "We know style/colour/size masters, EDI 850/810/856, factor management and retailer compliance inside out.",
+    title: "Built for importers and wholesalers",
+    body: "Style, color and size masters, EDI 850/810/856, factor management and retailer routing guides. Deep in apparel, and the same disciplines applied across home furnishings and consumer products.",
     icon: "tag",
   },
   {
     title: "100+ years of combined experience",
-    body: "A team that has run back offices for major US retailers, from Walmart to Nordstrom.",
+    body: "A team that has run back offices serving the major US retail accounts, from Walmart to Nordstrom.",
     icon: "clock",
   },
   {
@@ -145,7 +151,7 @@ export const servicesSummary: ServiceSummary[] = [
   },
   {
     title: "EDI",
-    body: "UPC maintenance, 850/810/856 documents, GS1-128 labels, full order/AR integration.",
+    body: "UPC maintenance, 850/810/856 documents, GS1-128 labels, full order and AR integration.",
     href: "/services",
   },
   {
@@ -182,20 +188,25 @@ export const finalCta = {
  * To add a client: drop the file in public/, import it at the top of this
  * file and push another entry. The strip re-flows automatically.
  *
- * `heightClass` optically balances logos of different shapes: Sutton is a
- * full-bleed square tile so it reads large at a small height, while
- * Bluestone's artwork sits inside heavy internal padding and needs a taller
- * box to match it.
+ * `heightClass` optically balances logos of different shapes rather than
+ * matching raw pixel height: Sutton is a full-bleed square tile so it reads
+ * large at a small height; Bluestone's artwork sits inside heavy internal
+ * padding and needs a taller box; Metro1 is a full-bleed wordmark at 6.4:1,
+ * so it needs a short box or it dominates the row.
  */
 export type ClientLogo = {
-  src: StaticImageData;
+  /** Static import for rasters; a public/ path for SVG (which Next cannot optimize). */
+  src: StaticImageData | string;
   alt: string;
+  /** Required when `src` is a path string. */
+  width?: number;
+  height?: number;
   heightClass: string;
 };
 
 export const clients = {
   enabled: true,
-  heading: "Trusted by apparel brands and importers",
+  heading: "Trusted by importers, wholesalers and brands",
   logos: [
     {
       src: suttonLogo,
@@ -207,12 +218,30 @@ export const clients = {
       alt: "Bluestone",
       heightClass: "h-20 sm:h-24",
     },
+    {
+      src: "/images/metro1-solutions.svg",
+      alt: "Metro1 Solutions",
+      width: 296,
+      height: 46,
+      heightClass: "h-8 sm:h-9",
+    },
   ] satisfies ClientLogo[],
+  /** Text only. We do not use retailer logos or brand marks anywhere. */
+  shipsToLabel: "Our clients ship to",
+  shipsTo: [
+    "Walmart",
+    "Target",
+    "Ross",
+    "Nordstrom",
+    "Macy's",
+    "Saks",
+    "Bloomingdale's",
+  ],
 };
 
 /* -------------------------------------------------------- testimonials page */
 
-/** Service areas, each with its own chip colour in the colour master. */
+/** Service areas, each with its own chip color in the color master. */
 export const serviceAreas = [
   { key: "edi", label: "EDI", chip: "bg-chip-edi" },
   { key: "accounting", label: "Accounting", chip: "bg-chip-accounting" },
@@ -234,7 +263,7 @@ export type Testimonial = {
 export const testimonialsIntro = {
   heading: "What our clients say",
   intro:
-    "A few words from the apparel importers and brands we support every day.",
+    "A few words from the importers, wholesalers and brands we support every day, across apparel, home furnishings and consumer products.",
 } as const;
 
 /**
@@ -263,7 +292,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     quote:
-      "We scale hard every autumn. Cresc flexes with us: no scramble to hire, no overtime bill in January, and no drop in accuracy.",
+      "We scale hard every fall. Cresc flexes with us: no scramble to hire, no overtime bill in January, and no drop in accuracy.",
     name: "Priya Nair",
     role: "President",
     company: "Coastline Brands",

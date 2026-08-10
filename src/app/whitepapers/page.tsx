@@ -1,18 +1,18 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
 import { ControlBar } from "@/components/ui/ControlBar";
+import { Lead } from "@/components/ui/Lead";
 import { FeaturedDocument } from "@/components/whitepapers/FeaturedDocument";
 import { IndexRow } from "@/components/whitepapers/IndexRow";
 import {
   availablePapers,
   featuredPaper,
   formatFiledDate,
-  orderedPapers,
 } from "@/content/whitepapers";
 import { logo, site } from "@/content/site";
 
 const description =
-  "Practical guidance on running a leaner, more accurate apparel supply chain back office: retailer chargebacks, EDI, back-office cost and seasonal capacity.";
+  "Practical guidance on running a leaner, more accurate supply chain back office for importers and wholesalers: retailer chargebacks, EDI, back-office cost and seasonal capacity.";
 
 export const metadata: Metadata = {
   title: "White Papers",
@@ -35,10 +35,10 @@ export const metadata: Metadata = {
 };
 
 export default function WhitePapersPage() {
-  const rest = orderedPapers.filter((p) => p.slug !== featuredPaper.slug);
+  const rest = availablePapers.filter((p) => p.slug !== featuredPaper.slug);
 
   // Derived from the data, so the control bar can never go stale.
-  const lastFiled = orderedPapers
+  const lastFiled = availablePapers
     .map((p) => p.filedDate)
     .sort()
     .at(-1);
@@ -47,23 +47,21 @@ export default function WhitePapersPage() {
     <div className="bg-paper">
       <ControlBar
         left={site.name}
-        centre="Document index"
+        center="Document index"
         right={lastFiled ? `Last filed ${formatFiledDate(lastFiled)}` : undefined}
       />
 
-      <Container className="pt-14 pb-12 sm:pt-20 sm:pb-16">
+      <Container className="pt-14 pb-14 sm:pt-20 sm:pb-20">
         <header className="max-w-3xl">
           <h1 className="font-display text-5xl font-semibold leading-[0.94] tracking-[-0.045em] text-navy sm:text-7xl lg:text-8xl">
             White papers
           </h1>
-          <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
-            {orderedPapers.length} documents / {availablePapers.length}{" "}
-            available
-          </p>
-          <p className="mt-7 max-w-xl text-lg leading-relaxed text-ink-soft">
-            Practical guidance on running a leaner, more accurate apparel supply
-            chain back office. Written by people who have done the work.
-          </p>
+          <Lead className="mt-7">
+            Practical guidance on running a leaner, more accurate supply chain
+            back office. Written by people who have done the work. Deepest in
+            apparel; the same ground applies to home furnishings and other
+            consumer products.
+          </Lead>
         </header>
       </Container>
 
@@ -71,8 +69,8 @@ export default function WhitePapersPage() {
         <FeaturedDocument paper={featuredPaper} />
       </Container>
 
-      <Container className="pt-16 pb-24 sm:pt-20 sm:pb-28">
-        <h2 className="border-b border-rule pb-3 font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+      <Container className="pt-20 pb-24 sm:pt-24 sm:pb-32">
+        <h2 className="border-b border-rule pb-3 font-mono text-[10px] uppercase tracking-[0.2em] text-label">
           All documents
         </h2>
         <ul>

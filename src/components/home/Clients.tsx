@@ -4,12 +4,16 @@ import { clients } from "@/content/site";
 import { cn } from "@/lib/cn";
 
 /**
- * Client logo strip.
+ * Client logo strip, plus the retail accounts line.
  *
  * Each logo sits in its own white card so artwork with different backgrounds
- * (Sutton is a pale tile, Bluestone ships on white) reads consistently against
- * the tinted section. Adding logos to `clients.logos` reflows the row — no
- * layout changes needed. Set `clients.enabled` to false to hide the section.
+ * reads consistently against the tinted section, and so a wide wordmark and a
+ * square tile occupy the same footprint. Adding a logo is one entry in
+ * `clients.logos` — the row reflows and wraps rather than shrinking.
+ *
+ * No treatment filter is applied: the two rasters are untreated (desaturating
+ * Sutton's white-on-pale-blue tile would erase it) and Metro1 is already
+ * monochrome, so the three sit together without one.
  */
 export function Clients() {
   if (!clients.enabled) return null;
@@ -22,16 +26,43 @@ export function Clients() {
         {clients.logos.map((logo) => (
           <div
             key={logo.alt}
-            className="flex h-32 w-full max-w-[16rem] items-center justify-center rounded-2xl border border-hairline bg-surface px-8 sm:w-64"
+            className="flex h-32 w-full max-w-[18rem] items-center justify-center rounded-none border border-hairline bg-surface px-8 sm:w-72"
           >
-            <Image
-              src={logo.src}
-              alt={logo.alt}
-              className={cn("w-auto object-contain", logo.heightClass)}
-              sizes="256px"
-            />
+            {typeof logo.src === "string" ? (
+              // SVG: served as-is, since the optimizer does not handle SVG.
+              <Image
+                src={logo.src}
+                alt={logo.alt}
+                width={logo.width}
+                height={logo.height}
+                unoptimized
+                className={cn(
+                  "w-auto max-w-full object-contain",
+                  logo.heightClass,
+                )}
+              />
+            ) : (
+              <Image
+                src={logo.src}
+                alt={logo.alt}
+                sizes="288px"
+                className={cn(
+                  "w-auto max-w-full object-contain",
+                  logo.heightClass,
+                )}
+              />
+            )}
           </div>
         ))}
+      </div>
+
+      <div className="mt-12 border-t border-hairline pt-8 text-center">
+        <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-label">
+          {clients.shipsToLabel}
+        </p>
+        <p className="mx-auto mt-3 max-w-2xl text-base leading-relaxed text-ink-soft">
+          {clients.shipsTo.join(" · ")}
+        </p>
       </div>
     </Section>
   );

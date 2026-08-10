@@ -6,19 +6,19 @@ import { Container } from "./Container";
  */
 export function ControlBar({
   left,
-  centre,
+  center,
   right,
 }: {
   left: React.ReactNode;
-  centre?: React.ReactNode;
+  center?: React.ReactNode;
   right?: React.ReactNode;
 }) {
   return (
     <div className="border-b border-rule">
       <Container>
-        <div className="flex items-center justify-between gap-4 py-3 font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+        <div className="flex items-center justify-between gap-4 py-3 font-mono text-[10px] uppercase tracking-[0.2em] text-label">
           <span>{left}</span>
-          {centre && <span className="hidden sm:block">{centre}</span>}
+          {center && <span className="hidden sm:block">{center}</span>}
           {right && <span className="text-right">{right}</span>}
         </div>
       </Container>

@@ -29,13 +29,17 @@ export function ApplyBlock({ role }: { role: Role }) {
         >
           Apply for this role
         </h2>
-        <p className="mt-4 max-w-[62ch] text-[1.0625rem] leading-relaxed text-ink-soft">
+        <p className="mt-4 max-w-prose text-[1.0625rem] leading-relaxed text-ink-soft">
           Email your CV to{" "}
+          {/* Underline sits on a child span, never the anchor, so the site-wide
+              invariant holds even where this link has no arrow today. */}
           <a
             href={href}
-            className="text-brand-600 underline underline-offset-4 transition-colors hover:text-brand-700"
+            className="text-brand-600 transition-colors hover:text-brand-700"
           >
-            {APPLY_EMAIL}
+            <span className="underline decoration-1 underline-offset-4">
+              {APPLY_EMAIL}
+            </span>
           </a>
           . Please attach your CV as a PDF or DOC file, and keep the role title
           in the subject line so it reaches the right team.
@@ -45,7 +49,7 @@ export function ApplyBlock({ role }: { role: Role }) {
           <Button href={href} size="lg" className="shrink-0">
             Apply for this role
           </Button>
-          <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-muted">
+          <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-label">
             Subject: Application: {role.title}
           </span>
         </div>

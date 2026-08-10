@@ -18,7 +18,7 @@ export const servicesHero = {
   eyebrow: "Services",
   headline: "Everything behind the order, handled.",
   subhead:
-    "Cresc runs the full back office for apparel importers — from the style master through to the financial statements. We work in your systems, to your retailers' rules, on your calendar.",
+    "Cresc runs the full back office for importers and wholesalers — from the style master through to the financial statements. Apparel, home furnishings and consumer products, in your systems, to your retailers' rules, on your calendar.",
 } as const;
 
 export const coreServices: CoreService[] = [
@@ -28,8 +28,8 @@ export const coreServices: CoreService[] = [
     intro:
       "Clean master data is what keeps everything downstream from breaking. We own it and keep it accurate.",
     items: [
-      "Style, colour and size masters",
-      "Customer bill-to, ship-to and distribution centre records",
+      "Style, color and size masters",
+      "Customer bill-to, ship-to and distribution center records",
       "Sales terms and pricing files",
       "Royalty tracking",
       "Custom MIS reporting by vendor",
@@ -44,7 +44,7 @@ export const coreServices: CoreService[] = [
       "Sales order entry across all channels",
       "Allocation against on-hand inventory and incoming production",
       "Pick ticket creation and warehouse release",
-      "Invoicing, credit memos and return authorisations",
+      "Invoicing, credit memos and return authorizations",
       "Custom reporting",
     ],
   },
@@ -57,7 +57,7 @@ export const coreServices: CoreService[] = [
       "UPC and GTIN maintenance",
       "Purchase orders (850), invoices (810), advance ship notices (856)",
       "GS1-128 / UCC-128 carton labels",
-      "UPC catalogue maintenance (GXS, InterTrade and similar)",
+      "UPC catalog maintenance (GXS, InterTrade and similar)",
       "Routing requests and retailer routing instructions",
       "Full integration with order management, AR and inventory",
     ],
@@ -76,7 +76,7 @@ export const coreServices: CoreService[] = [
   {
     step: "05",
     title: "Credit & AR Management",
-    intro: "Approvals moving, cash applied, ageing under control.",
+    intro: "Approvals moving, cash applied, aging under control.",
     items: [
       "Factor data entry and submissions",
       "Factor approvals and declines",
@@ -123,7 +123,7 @@ export const crossCutting: CrossCuttingService[] = [
 ];
 
 export const whyCresc: string[] = [
-  "Apparel is all we do. Style/colour/size, factor approvals, routing guides — this is our day job, not a vertical we serve.",
+  "Consumer goods importing is all we do. Style/color/size, factor approvals, routing guides — this is our day job, not a vertical we serve. Our deepest expertise is apparel, and the same processes run home furnishings and other consumer products.",
   "100+ years of combined supply chain experience, including back offices for major US retail accounts.",
   "Built for the seasonal peak. Capacity flexes with your calendar, without hiring and firing.",
   "Substantially lower cost than an in-house team, with fewer errors.",

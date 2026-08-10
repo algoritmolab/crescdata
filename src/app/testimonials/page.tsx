@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
+import { ArrowLink } from "@/components/ui/ArrowLink";
 import { ControlBar } from "@/components/ui/ControlBar";
 import { CtaBand } from "@/components/ui/CtaBand";
+import { Lead } from "@/components/ui/Lead";
 import {
   serviceAreas,
   testimonials,
@@ -11,7 +14,7 @@ import {
 } from "@/content/site";
 
 const description =
-  "What apparel importers say about working with Cresc Datasoft, across EDI, accounting, imports, compliance and day-to-day operations.";
+  "What importers and wholesalers say about working with Cresc Datasoft, across EDI, accounting, imports, compliance and day-to-day operations.";
 
 export const metadata: Metadata = {
   title: "Client Testimonials",
@@ -36,32 +39,50 @@ export default function TestimonialsPage() {
     <div className="bg-paper">
       <ControlBar
         left={site.name}
-        centre="Client record"
+        center="Client record"
         right={`${testimonials.length} entries`}
       />
 
-      <Container className="pt-14 pb-12 sm:pt-20 sm:pb-16">
-        <header className="max-w-3xl">
-          <h1 className="font-display text-5xl font-semibold leading-[0.94] tracking-[-0.045em] text-navy sm:text-7xl">
-            {testimonialsIntro.heading}
-          </h1>
-          <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
-            {testimonials.length} accounts /{" "}
-            {serviceAreas.length} service areas
-          </p>
-          <p className="mt-7 max-w-xl text-lg leading-relaxed text-ink-soft">
-            {testimonialsIntro.intro}
-          </p>
-        </header>
-      </Container>
+      {/*
+        Masthead band only. The photograph stops here by design: the spec grid
+        below works because every cell is identical, and an image behind or
+        between the cells would break that uniformity.
+      */}
+      <section className="relative isolate flex min-h-[380px] items-center overflow-hidden bg-navy sm:min-h-[420px] lg:min-h-[460px]">
+        <Image
+          src="/images/client-meeting.webp"
+          alt=""
+          fill
+          sizes="100vw"
+          className="photo object-cover"
+          style={{ objectPosition: "50% 38%" }}
+        />
+        <div aria-hidden="true" className="photo-tint absolute inset-0" />
+        <div aria-hidden="true" className="photo-scrim-left absolute inset-0" />
 
-      <Container className="pb-24 sm:pb-28">
+        <Container className="relative w-full py-14 sm:py-16">
+          <header>
+            <h1 className="font-display text-[2.4rem] font-semibold leading-[0.98] tracking-[-0.045em] text-white sm:text-6xl">
+              {testimonialsIntro.heading}
+            </h1>
+            <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.2em] text-brand-100">
+              {testimonials.length} accounts / {serviceAreas.length} service
+              areas
+            </p>
+            <Lead tone="light" className="mt-6">
+              {testimonialsIntro.intro}
+            </Lead>
+          </header>
+        </Container>
+      </section>
+
+      <Container className="pt-14 pb-24 sm:pt-16 sm:pb-28">
         {/*
           PLACEHOLDER TESTIMONIALS — the quotes and attributions in
           content/site.ts are illustrative, not real client statements.
           Swap them for approved quotes before launch.
 
-          The grid rules are a rule-coloured ground showing through 1px gaps,
+          The grid rules are a rule-colored ground showing through 1px gaps,
           and grid-auto-rows-fr forces every cell to the height of the tallest
           in its row, so cells never size to their own content.
         */}
@@ -78,7 +99,7 @@ export default function TestimonialsPage() {
                     aria-hidden="true"
                     className={`block h-3 w-8 shrink-0 transition-all duration-300 group-hover:w-14 ${area.chip}`}
                   />
-                  <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+                  <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-label">
                     {area.label}
                   </span>
                 </div>
@@ -91,7 +112,7 @@ export default function TestimonialsPage() {
                   <p className="font-display text-sm font-semibold text-navy">
                     {t.name}
                   </p>
-                  <p className="mt-1 font-mono text-[11px] leading-relaxed text-muted">
+                  <p className="mt-1 font-mono text-[11px] leading-relaxed text-label">
                     {t.role}
                     <span className="block">{t.company}</span>
                   </p>
@@ -101,29 +122,25 @@ export default function TestimonialsPage() {
           })}
 
           {/*
-            The one deliberate break in the grid: a solid cell carrying the
-            colour master itself, so the chips above have a legend.
+            The one deliberate break in the grid. Restrained on purpose: it
+            keeps the cell dimensions and the hairline rhythm, and sits inside
+            the grid rather than competing with the quotes around it.
           */}
-          <li className="flex flex-col justify-between bg-navy p-6 sm:p-8">
-            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-brand-300">
-              Colour master
+          <li className="flex flex-col bg-surface p-6 sm:p-8">
+            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-label">
+              Your turn
             </span>
-            <ul className="mt-8 space-y-3">
-              {serviceAreas.map((a) => (
-                <li key={a.key} className="flex items-center gap-3">
-                  <span
-                    aria-hidden="true"
-                    className={`block h-3 w-8 shrink-0 ${a.chip}`}
-                  />
-                  <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-white">
-                    {a.label}
-                  </span>
-                </li>
-              ))}
-            </ul>
-            <p className="mt-8 font-mono text-[10px] uppercase leading-relaxed tracking-[0.2em] text-brand-300">
-              One back office
+            <p className="mt-7 flex-1 font-display text-lg font-medium leading-[1.4] tracking-[-0.015em] text-navy sm:text-xl">
+              Talk to us about handing over your back office.
             </p>
+            <div className="mt-8 border-t border-rule pt-5">
+              <ArrowLink
+                href="/contact"
+                className="font-mono text-[11px] uppercase tracking-[0.16em]"
+              >
+                Get in touch
+              </ArrowLink>
+            </div>
           </li>
         </ul>
       </Container>

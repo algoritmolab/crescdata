@@ -4,6 +4,9 @@ import { notFound } from "next/navigation";
 import { Container } from "@/components/ui/Container";
 import { ControlBar } from "@/components/ui/ControlBar";
 import { DataLabel, DataValue, Bullet } from "@/components/ui/Data";
+import { Lead } from "@/components/ui/Lead";
+import { BackLink } from "@/components/ui/BackLink";
+import { ArrowIcon } from "@/components/ui/ArrowLink";
 import { ApplyBlock } from "@/components/careers/ApplyBlock";
 import { getRole, roles, type Role } from "@/content/roles";
 import { logo, site } from "@/content/site";
@@ -41,7 +44,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 function BulletList({ items }: { items: string[] }) {
   return (
-    <ul className="mt-6 max-w-[66ch] space-y-3.5">
+    <ul className="mt-6 max-w-prose space-y-3.5">
       {items.map((item) => (
         <li key={item} className="relative pl-6">
           <Bullet />
@@ -86,14 +89,7 @@ export default async function RolePage({ params }: Props) {
   return (
     <div className="bg-paper">
       <ControlBar
-        left={
-          <Link
-            href="/careers"
-            className="transition-colors hover:text-brand-600"
-          >
-            &larr; All roles
-          </Link>
-        }
+        left={<BackLink href="/careers">All roles</BackLink>}
         right={role.department}
       />
 
@@ -101,9 +97,7 @@ export default async function RolePage({ params }: Props) {
         <h1 className="max-w-4xl font-display text-[2.35rem] font-semibold leading-[1.02] tracking-[-0.04em] text-navy sm:text-5xl lg:text-6xl">
           {role.title}
         </h1>
-        <p className="mt-7 max-w-2xl text-lg leading-relaxed text-ink-soft sm:text-xl">
-          {role.summary}
-        </p>
+        <Lead className="mt-7">{role.summary}</Lead>
       </Container>
 
       <Container>
@@ -158,10 +152,11 @@ export default async function RolePage({ params }: Props) {
                 href={`/careers/${previous.slug}`}
                 className="group bg-paper p-6 transition-colors hover:bg-surface"
               >
-                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
-                  &larr; Previous role
+                <span className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-label">
+                  <ArrowIcon direction="left" />
+                  Previous role
                 </span>
-                <span className="mt-3 block font-display text-base font-semibold leading-snug text-navy transition-colors group-hover:text-brand-600">
+                <span className="mt-3 block font-display text-base font-semibold leading-snug text-navy transition-colors group-hover:text-brand-700">
                   {previous.title}
                 </span>
               </Link>
@@ -174,10 +169,11 @@ export default async function RolePage({ params }: Props) {
                 href={`/careers/${next.slug}`}
                 className="group bg-paper p-6 transition-colors hover:bg-surface sm:text-right"
               >
-                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
-                  Next role &rarr;
+                <span className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-label sm:justify-end">
+                  Next role
+                  <ArrowIcon direction="right" />
                 </span>
-                <span className="mt-3 block font-display text-base font-semibold leading-snug text-navy transition-colors group-hover:text-brand-600">
+                <span className="mt-3 block font-display text-base font-semibold leading-snug text-navy transition-colors group-hover:text-brand-700">
                   {next.title}
                 </span>
               </Link>

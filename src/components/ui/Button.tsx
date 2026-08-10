@@ -5,7 +5,7 @@ type Variant = "primary" | "secondary" | "onBrand" | "disabled";
 type Size = "md" | "lg";
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-lg font-semibold transition duration-200";
+  "group inline-flex items-center justify-center gap-2 rounded-lg font-semibold transition duration-200";
 
 /** Shared hover/active motion for the interactive variants. */
 const lift = "hover:-translate-y-0.5 hover:shadow-md active:translate-y-0";

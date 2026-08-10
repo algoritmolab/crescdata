@@ -48,13 +48,13 @@ export const roles: Role[] = defineRoles([
     location: "Bangalore",
     experience: "2–7 years",
     summary:
-      "You run the order-to-ship cycle for US apparel importers — entering orders, allocating stock, releasing pick tickets and getting invoices out clean.",
+      "You run the order-to-ship cycle for US importers and wholesalers — entering orders, allocating stock, releasing pick tickets and getting invoices out clean.",
     responsibilities: [
       "Create sales orders",
       "Allocate against inventory",
       "Send pick tickets to the warehouse",
       "Coordinate with warehouses by phone and email",
-      "Raise invoices, credit memos and return authorisations",
+      "Raise invoices, credit memos and return authorizations",
       "Take credit approvals from factors and banks",
       "Manage inventory records",
       "Coordinate with sales reps and owners",
@@ -80,7 +80,7 @@ export const roles: Role[] = defineRoles([
     summary:
       "You keep cash coming in — chasing delinquent B2B accounts, resolving disputes and keeping bad debt down for US clients.",
     responsibilities: [
-      "Review the ageing report daily and investigate credits and overpayments",
+      "Review the aging report daily and investigate credits and overpayments",
       "Contact delinquent accounts and resolve discrepancies by phone and email",
       "Keep a full contact log of every conversation",
       "Work the credit hold report and respond to hold alerts so orders release on time",
@@ -106,11 +106,11 @@ export const roles: Role[] = defineRoles([
     summary:
       "You decide how inventory and incoming production get allocated across live customer orders, and keep shippable volume as high as possible.",
     responsibilities: [
-      "Analyse customer sales orders and allocate to inventory or production",
+      "Analyze customer sales orders and allocate to inventory or production",
       "Flag orders needing extension for production delays",
       "Handle orders hit by factory short shipments or quality issues",
       "Resolve issues across customer, warehouse and sales team",
-      "Prioritise the day against inbound freight schedules and shipping goals",
+      "Prioritize the day against inbound freight schedules and shipping goals",
       "Manage inventory daily and resolve factory overages and shortages",
       "Maintain master files and order changes, including cancellations, corrections and bulk adjustments",
       "Check distribution orders against bulked quantities",
@@ -120,7 +120,7 @@ export const roles: Role[] = defineRoles([
     requirements: [
       "Strong Excel, Word and Outlook",
       "Excellent written and spoken English",
-      "Highly organised and detail-focused",
+      "Highly organized and detail-focused",
       "Able to hold multiple priorities under pressure",
       "Customer-service background with a flexible approach to deadlines",
     ],
@@ -163,7 +163,7 @@ export const roles: Role[] = defineRoles([
     location: "Bangalore",
     experience: "0–2 years",
     summary:
-      "An entry route into apparel supply chain work. You process live client transactions and grow into owning the day-to-day relationship.",
+      "An entry route into consumer goods supply chain work. You process live client transactions and grow into owning the day-to-day relationship.",
     responsibilities: [
       "Process and maintain data accurately to deadline",
       "Liaise with clients, warehouses and factors to resolve data queries",
@@ -268,9 +268,9 @@ export const roles: Role[] = defineRoles([
 
 export const careersIntro = {
   eyebrow: "Careers",
-  headline: "Work on the operations behind US apparel.",
+  headline: "Work on the operations behind US import and wholesale.",
   subhead:
-    "Our teams in Bangalore and Coimbatore run live back-office operations for apparel importers in the United States. The work is real, the deadlines are real, and you learn an industry properly.",
+    "Our teams in Bangalore and Coimbatore run live back-office operations for importers and wholesalers in the United States, across apparel, home furnishings and consumer products. The work is real, the deadlines are real, and you learn an industry properly.",
 } as const;
 
 export const beforeYouApply: string[] = [

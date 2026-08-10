@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { BarcodeMark } from "./Barcode";
-import { Marker } from "@/components/ui/Data";
 import type { WhitePaper } from "@/content/whitepapers";
 
 const GRID =
@@ -11,49 +10,11 @@ const META = "font-mono text-[11px] uppercase tracking-[0.16em]";
 /**
  * One line of the index.
  *
- * Available documents render the entire row as a single link. Forthcoming ones
- * render as plain content with no interactive element at all, so there is
- * nothing for a keyboard or screen reader to land on and nothing that looks
- * like a broken button.
+ * The index is fed available papers only, so there is no dimmed "not yet
+ * filed" variant here. Forthcoming entries stay in the content source and are
+ * filtered out upstream.
  */
 export function IndexRow({ paper }: { paper: WhitePaper }) {
-  const available = paper.status === "available";
-
-  if (!available) {
-    return (
-      <li className="border-b border-rule">
-        <div className={`${GRID} px-1 py-8`}>
-          <div className="mb-4 w-[136px] text-rule lg:mb-0">
-            <BarcodeMark code={paper.docRef} height={26} symbols={22} />
-          </div>
-
-          <div>
-            <h3 className="font-display text-xl font-semibold tracking-[-0.02em] text-muted lg:text-[1.4rem]">
-              {paper.title}
-            </h3>
-            <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted">
-              {paper.summary}
-            </p>
-          </div>
-
-          <div
-            className={`${META} mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-muted lg:contents`}
-          >
-            <span>{paper.topic}</span>
-            {/* Holds the read-time column open on desktop; pointless on mobile. */}
-            <span className="hidden lg:block" aria-hidden="true">
-              &mdash;
-            </span>
-            <span className="flex items-center gap-2 lg:justify-end">
-              <Marker />
-              Not yet filed
-            </span>
-          </div>
-        </div>
-      </li>
-    );
-  }
-
   return (
     <li className="border-b border-rule">
       <Link
@@ -73,25 +34,25 @@ export function IndexRow({ paper }: { paper: WhitePaper }) {
               height={26}
               symbols={22}
               stagger
-              barsClassName="text-navy transition-colors group-hover:text-brand-600 group-focus-visible:text-brand-600"
+              barsClassName="text-navy transition-colors group-hover:text-brand-700 group-focus-visible:text-brand-700"
             />
           </div>
 
           <div>
-            <h3 className="font-display text-xl font-semibold tracking-[-0.02em] text-navy transition-colors group-hover:text-brand-600 lg:text-[1.4rem]">
+            <h3 className="font-display text-xl font-semibold tracking-[-0.02em] text-navy transition-colors group-hover:text-brand-700 lg:text-[1.4rem]">
               {paper.title}
             </h3>
-            <p className="mt-2 max-w-2xl text-sm leading-relaxed text-ink-soft">
+            <p className="mt-2 max-w-prose text-sm leading-relaxed text-ink-soft">
               {paper.summary}
             </p>
           </div>
 
           <div
-            className={`${META} mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-muted lg:contents`}
+            className={`${META} mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-label lg:contents`}
           >
             <span>{paper.topic}</span>
             <span>{paper.readTime}</span>
-            <span className="text-brand-600 lg:text-right">Filed</span>
+            <span className="text-brand-700 lg:text-right">Filed</span>
           </div>
         </div>
       </Link>

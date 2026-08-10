@@ -3,6 +3,8 @@ import { Container } from "@/components/ui/Container";
 import { ControlBar } from "@/components/ui/ControlBar";
 import { CtaBand } from "@/components/ui/CtaBand";
 import { Bullet } from "@/components/ui/Data";
+import { Lead } from "@/components/ui/Lead";
+import { PhotoBand } from "@/components/ui/PhotoBand";
 import {
   coreServices,
   crossCutting,
@@ -12,7 +14,7 @@ import {
 import { logo, site } from "@/content/site";
 
 const description =
-  "Order processing, EDI, import management, AR, factor and full accounting for US apparel importers. Cresc runs your back office inside your own systems.";
+  "Order processing, EDI, import management, AR, factor and full accounting for US importers and wholesalers. Cresc runs your back office inside your own systems.";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -34,26 +36,39 @@ export default function ServicesPage() {
     <div className="bg-paper">
       <ControlBar
         left={site.name}
-        centre="Service schedule"
+        center="Service schedule"
         right={`${coreServices.length} core services`}
       />
 
       {/* Hero */}
       <Container className="pt-14 pb-16 sm:pt-20 sm:pb-20">
-        <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
+        <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-label">
           {servicesHero.eyebrow}
         </p>
         <h1 className="mt-5 max-w-4xl font-display text-[2.6rem] font-semibold leading-[0.98] tracking-[-0.045em] text-navy sm:text-6xl lg:text-7xl">
           {servicesHero.headline}
         </h1>
-        <p className="mt-7 max-w-2xl text-lg leading-relaxed text-ink-soft sm:text-xl">
-          {servicesHero.subhead}
-        </p>
+        <Lead className="mt-7">{servicesHero.subhead}</Lead>
       </Container>
+
+      {/*
+        Establishing band. The photograph is the retailer end of the chain —
+        where everything the back office processes actually lands — so it
+        earns descriptive alt text rather than being treated as decoration.
+      */}
+      <PhotoBand
+        src="/images/apparel-retail-floor.webp"
+        alt="Racks of clothing and seasonal signage on a department store apparel floor."
+        eyebrow="Where the order lands"
+        objectPosition="50% 45%"
+      >
+        Every order we touch ends up on a shop floor, on time and packed to the
+        retailer&rsquo;s routing guide.
+      </PhotoBand>
 
       {/* Core services — the order-to-cash spine */}
       <Container className="pb-20 sm:pb-24">
-        <h2 className="border-b border-rule pb-3 font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+        <h2 className="border-b border-rule pb-3 font-mono text-[10px] uppercase tracking-[0.2em] text-label">
           The order lifecycle
         </h2>
 
@@ -74,10 +89,10 @@ export default function ServicesPage() {
                 )}
 
                 <div className="mb-6 flex items-center gap-4 lg:mb-0 lg:block">
-                  <span className="flex h-14 w-14 shrink-0 items-center justify-center border border-rule bg-surface font-mono text-base text-brand-600">
+                  <span className="flex h-14 w-14 shrink-0 items-center justify-center border border-rule bg-surface font-mono text-base text-brand-700">
                     {service.step}
                   </span>
-                  <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted lg:hidden">
+                  <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-label lg:hidden">
                     Step {service.step}
                   </span>
                 </div>
@@ -86,7 +101,7 @@ export default function ServicesPage() {
                   <h3 className="font-display text-2xl font-semibold tracking-[-0.03em] text-navy sm:text-[2rem]">
                     {service.title}
                   </h3>
-                  <p className="mt-4 max-w-2xl text-[1.0625rem] leading-relaxed text-ink-soft">
+                  <p className="mt-4 max-w-prose text-[1.0625rem] leading-relaxed text-ink-soft">
                     {service.intro}
                   </p>
 
@@ -113,7 +128,7 @@ export default function ServicesPage() {
           <h2 className="font-display text-3xl font-semibold tracking-[-0.03em] text-white sm:text-4xl">
             Running alongside all of it
           </h2>
-          <p className="mt-4 max-w-xl font-mono text-[11px] uppercase leading-relaxed tracking-[0.2em] text-brand-300">
+          <p className="mt-4 max-w-[68ch] font-mono text-[11px] uppercase leading-relaxed tracking-[0.2em] text-brand-300">
             Not a step in the sequence
           </p>
 

@@ -3,6 +3,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/ui/Container";
 import { ControlBar } from "@/components/ui/ControlBar";
+import { Lead } from "@/components/ui/Lead";
+import { BackLink } from "@/components/ui/BackLink";
+import { ArrowIcon } from "@/components/ui/ArrowLink";
 import { SpecBlock } from "@/components/whitepapers/SpecBlock";
 import { Contents } from "@/components/whitepapers/Contents";
 import { DocumentBody } from "@/components/whitepapers/DocumentBody";
@@ -70,27 +73,18 @@ export default async function WhitePaperPage({ params }: Props) {
   return (
     <div className="bg-paper">
       <ControlBar
-        left={
-          <Link
-            href="/whitepapers"
-            className="transition-colors hover:text-brand-600"
-          >
-            &larr; Document index
-          </Link>
-        }
+        left={<BackLink href="/whitepapers">Document index</BackLink>}
         right={paper.docRef}
       />
 
       <Container className="pt-12 pb-10 sm:pt-16 sm:pb-12">
-        <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
+        <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-label">
           {paper.topic}
         </p>
         <h1 className="mt-5 max-w-4xl font-display text-[2.35rem] font-semibold leading-[1.02] tracking-[-0.04em] text-navy sm:text-6xl">
           {paper.title}
         </h1>
-        <p className="mt-7 max-w-2xl text-lg leading-relaxed text-ink-soft sm:text-xl">
-          {paper.summary}
-        </p>
+        <Lead className="mt-7">{paper.summary}</Lead>
       </Container>
 
       <Container>
@@ -119,10 +113,11 @@ export default async function WhitePaperPage({ params }: Props) {
                 href={`/whitepapers/${previous.slug}`}
                 className="group bg-paper p-6 transition-colors hover:bg-surface"
               >
-                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
-                  &larr; Previous
+                <span className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-label">
+                  <ArrowIcon direction="left" />
+                  Previous
                 </span>
-                <span className="mt-3 block font-display text-base font-semibold leading-snug text-navy transition-colors group-hover:text-brand-600">
+                <span className="mt-3 block font-display text-base font-semibold leading-snug text-navy transition-colors group-hover:text-brand-700">
                   {previous.title}
                 </span>
               </Link>
@@ -135,10 +130,11 @@ export default async function WhitePaperPage({ params }: Props) {
                 href={`/whitepapers/${next.slug}`}
                 className="group bg-paper p-6 transition-colors hover:bg-surface sm:text-right"
               >
-                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
-                  Next &rarr;
+                <span className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-label sm:justify-end">
+                  Next
+                  <ArrowIcon direction="right" />
                 </span>
-                <span className="mt-3 block font-display text-base font-semibold leading-snug text-navy transition-colors group-hover:text-brand-600">
+                <span className="mt-3 block font-display text-base font-semibold leading-snug text-navy transition-colors group-hover:text-brand-700">
                   {next.title}
                 </span>
               </Link>

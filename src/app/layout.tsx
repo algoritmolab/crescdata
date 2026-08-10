@@ -27,7 +27,7 @@ const plexMono = IBM_Plex_Mono({
 
 const title = `${site.name} — ${site.tagline}`;
 const description =
-  "Cresc Datasoft runs the back office for apparel importers — order processing, EDI, import management, AR and accounting. Lower cost, higher accuracy.";
+  "Cresc Datasoft runs the back office for importers and wholesalers in apparel, home furnishings and consumer products — order processing, EDI, import management, AR and accounting.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -39,13 +39,14 @@ export const metadata: Metadata = {
   description,
   applicationName: site.name,
   keywords: [
-    "apparel back office",
+    "consumer goods back office",
     "supply chain BPO",
     "EDI services",
     "order processing",
     "import management",
     "accounts receivable outsourcing",
-    "apparel importers",
+    "importers and wholesalers",
+    "home furnishings",
   ],
   openGraph: {
     type: "website",

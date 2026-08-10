@@ -61,7 +61,14 @@ export function Footer() {
 
         <div className="mt-14 border-t border-white/15 pt-8">
           <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
-            <p className="text-lg font-semibold tracking-tight">{site.name}</p>
+            <div>
+              <p className="font-display text-lg font-semibold tracking-tight">
+                {site.name}
+              </p>
+              <p className="mt-1.5 font-mono text-[11px] tracking-[0.08em] text-brand-200">
+                {site.strapline}
+              </p>
+            </div>
             <nav aria-label="Footer" className="flex flex-wrap gap-x-6 gap-y-2">
               {navLinks.map((link) => (
                 <Link

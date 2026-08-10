@@ -20,13 +20,21 @@ export function Header() {
     <header className="sticky top-0 z-50 border-b border-hairline bg-surface/85 backdrop-blur-md">
       <Container>
         <div className="flex h-16 items-center justify-between gap-4 sm:h-20">
-          <Link href="/" className="shrink-0" aria-label={`${site.name} home`}>
+          <Link
+            href="/"
+            className="flex shrink-0 items-center gap-3"
+            aria-label={`${site.name} home`}
+          >
             <Image
               src={logo}
               alt={site.name}
               priority
               className="h-8 w-auto sm:h-9"
             />
+            {/* Hidden on the narrowest screens so it never crowds the hamburger. */}
+            <span className="hidden border-l border-hairline pl-3 font-mono text-[10px] tracking-[0.08em] text-label xl:inline-block">
+              {site.strapline}
+            </span>
           </Link>
 
           {/* Desktop nav. Seven links plus the CTA is tight at 1024px, so the
@@ -38,7 +46,7 @@ export function Header() {
                 href={link.href}
                 aria-current={isActive(link.href) ? "page" : undefined}
                 className={cn(
-                  "whitespace-nowrap rounded-md px-2 py-2 text-[13px] font-medium transition-colors xl:px-3 xl:text-sm",
+                  "whitespace-nowrap rounded-md px-2 py-2 text-[13px] font-medium transition-colors xl:px-3",
                   isActive(link.href)
                     ? "text-brand-700"
                     : "text-ink-soft hover:text-brand-700",

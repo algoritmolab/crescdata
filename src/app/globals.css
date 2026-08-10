@@ -39,7 +39,14 @@
   /* Semantic neutrals (slate-based) */
   --color-ink: #0f172a;
   --color-ink-soft: #334155;
-  --color-muted: #64748b;
+  /* Raised from #64748b, which only reached 4.1:1 on the paper ground.
+     Now 5.4:1 on paper and 6.2:1 on white. */
+  --color-muted: #526277;
+
+  /* Single source of truth for mono labels, eyebrows and small-caps meta.
+     7.1:1 on paper, 8.2:1 on white — comfortably AA at small sizes. */
+  --color-label: #3f5069;
+
   --color-surface: #ffffff;
   --color-surface-subtle: #f8fafc;
   --color-surface-sunken: #f1f5f9;
@@ -108,6 +115,69 @@
     outline: 2px solid var(--color-brand-600);
     outline-offset: 2px;
     border-radius: 2px;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Shared photographic treatment.
+
+   Every photograph on the site goes through these three classes so the set
+   reads as one deliberate library rather than assorted stock. Never place
+   body copy over a photograph without one of the scrims.
+--------------------------------------------------------------------------- */
+@layer components {
+  /* Desaturate and firm up the image before it is tinted. */
+  .photo {
+    filter: saturate(0.58) contrast(1.06) brightness(0.97);
+  }
+
+  /* Cool tonal shift toward the brand blue. `color` takes hue and chroma from
+     this layer and keeps the base luminance, so the scrim contrast figures
+     below stay valid no matter which photograph sits underneath. */
+  .photo-tint {
+    background-color: var(--color-brand-800);
+    mix-blend-mode: color;
+    opacity: 0.45;
+  }
+
+  /* Scrim for a left-aligned block of copy over a photo (the home hero).
+     Wide screens get a horizontal falloff so the right of the image stays
+     readable as a picture; narrow screens get a flat, stronger scrim because
+     the copy spans the full width there. */
+  /* Alpha values are not eyeballed: they are the lightest scrim that still
+     measured >= 4.9:1 for every text colour used, sampled per-pixel over the
+     actual photograph at 375 / 768 / 1440 with this crop. Heavier than this
+     and the photograph stops reading as a photograph. */
+  .photo-scrim-left {
+    background: linear-gradient(
+      180deg,
+      rgb(11 37 69 / 0.74) 0%,
+      rgb(11 37 69 / 0.82) 100%
+    );
+  }
+
+  @media (min-width: 1024px) {
+    .photo-scrim-left {
+      background:
+        linear-gradient(
+          90deg,
+          rgb(11 37 69 / 0.88) 0%,
+          rgb(11 37 69 / 0.82) 42%,
+          rgb(11 37 69 / 0.5) 72%,
+          rgb(11 37 69 / 0.28) 100%
+        ),
+        linear-gradient(180deg, rgb(11 37 69 / 0.2) 0%, rgb(11 37 69 / 0.34) 100%);
+    }
+  }
+
+  /* Scrim for a single line of copy sitting at the foot of a band. */
+  .photo-scrim-bottom {
+    background: linear-gradient(
+      180deg,
+      rgb(11 37 69 / 0.36) 0%,
+      rgb(11 37 69 / 0.62) 42%,
+      rgb(11 37 69 / 0.92) 100%
+    );
   }
 }
 

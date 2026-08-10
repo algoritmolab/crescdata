@@ -80,7 +80,7 @@ export const whitePapers: WhitePaper[] = [
     docRef: "CD-011",
     title: "The Hidden Cost of Retailer Chargebacks — and How to Cut Them",
     summary:
-      "Where apparel importers lose margin to compliance errors, and a practical framework to reduce it.",
+      "Where importers and wholesalers lose margin to compliance errors, and a practical framework to reduce it.",
     topic: "Compliance",
     filedDate: "2025-04-22",
     readTime: "9 min",
@@ -181,7 +181,7 @@ export const whitePapers: WhitePaper[] = [
           },
           {
             kind: "para",
-            text: "The register is the part people skip and the part that pays. Without it you are arguing about individual charges as they arrive. With it you can see that 60% of last quarter's deduction value came from one cause at one distribution centre, which is a problem you can actually solve.",
+            text: "The register is the part people skip and the part that pays. Without it you are arguing about individual charges as they arrive. With it you can see that 60% of last quarter's deduction value came from one cause at one distribution center, which is a problem you can actually solve.",
           },
           {
             kind: "quote",
@@ -216,7 +216,7 @@ export const whitePapers: WhitePaper[] = [
         blocks: [
           {
             kind: "para",
-            text: "We run this work for apparel importers as part of the back office: ASN generation and transmission monitoring, label validation, the deduction register, and disputes filed against each retailer's deadline. If you already have the controls above and they are holding, you do not need us for this. If you know the number is too high and nobody has the time to own it, that is the conversation worth having.",
+            text: "We run this work for importers and wholesalers as part of the back office: ASN generation and transmission monitoring, label validation, the deduction register, and disputes filed against each retailer's deadline. If you already have the controls above and they are holding, you do not need us for this. If you know the number is too high and nobody has the time to own it, that is the conversation worth having.",
           },
         ],
       },
@@ -242,7 +242,7 @@ export const whitePapers: WhitePaper[] = [
         blocks: [
           {
             kind: "para",
-            text: "EDI has a reputation for complexity that the document set does not deserve. For most apparel importers the working set is small and stable.",
+            text: "EDI has a reputation for complexity that the document set does not deserve. For most importers and wholesalers the working set is small and stable.",
           },
           {
             kind: "table",
@@ -255,7 +255,7 @@ export const whitePapers: WhitePaper[] = [
               { label: "810", value: "Invoice" },
               { label: "820", value: "Remittance, including deductions" },
               { label: "997", value: "Proof a document actually arrived" },
-              { label: "832", value: "Price and product catalogue" },
+              { label: "832", value: "Price and product catalog" },
               { label: "852", value: "Sell-through by store" },
               { label: "846", value: "Inventory availability" },
             ],
@@ -277,7 +277,7 @@ export const whitePapers: WhitePaper[] = [
           { kind: "subhead", text: "The mapping is not the hard part" },
           {
             kind: "para",
-            text: "Translating a file format is a solved problem. Any provider can map an 850. The work that takes the time is master data: making sure a style, colour and size in your system matches the item the retailer thinks they ordered, that the UPC on the carton matches the GTIN on the 856, that the ship-to location code points at the right DC, and that your vendor number is correct for the division placing the order. Get that wrong and the documents will transmit perfectly and still fail.",
+            text: "Translating a file format is a solved problem. Any provider can map an 850. The work that takes the time is master data: making sure a style, color and size in your system matches the item the retailer thinks they ordered, that the UPC on the carton matches the GTIN on the 856, that the ship-to location code points at the right DC, and that your vendor number is correct for the division placing the order. Get that wrong and the documents will transmit perfectly and still fail.",
           },
           { kind: "subhead", text: "The ASN has to match the cartons" },
           {
@@ -287,7 +287,7 @@ export const whitePapers: WhitePaper[] = [
           { kind: "subhead", text: "Item set-up causes more delay than mapping" },
           {
             kind: "para",
-            text: "A retailer will not send you an 850 for an item their system does not recognise. Before a single order flows, the style has to exist on their side with the right item number, the right UPC at each colour and size, the right pack configuration and the right price. That set-up runs on the retailer's calendar, not yours, and it is frequently the reason a launch slips. Build it into the plan as a dated task with an owner rather than assuming it happens alongside the technical work.",
+            text: "A retailer will not send you an 850 for an item their system does not recognize. Before a single order flows, the style has to exist on their side with the right item number, the right UPC at each color and size, the right pack configuration and the right price. That set-up runs on the retailer's calendar, not yours, and it is frequently the reason a launch slips. Build it into the plan as a dated task with an owner rather than assuming it happens alongside the technical work.",
           },
           { kind: "subhead", text: "Nobody watches the acknowledgements" },
           {
@@ -355,7 +355,7 @@ export const whitePapers: WhitePaper[] = [
         blocks: [
           {
             kind: "para",
-            text: "We run EDI day to day for apparel importers: UPC and item maintenance, the 850 through 810 cycle, ASN generation against retailer windows, GS1-128 labelling, and acknowledgement monitoring. We work with whichever provider you already have. If you are still choosing one, the questions above are the ones we would ask on your behalf.",
+            text: "We run EDI day to day for importers and wholesalers: UPC and item maintenance, the 850 through 810 cycle, ASN generation against retailer windows, GS1-128 labeling, and acknowledgement monitoring. We work with whichever provider you already have. If you are still choosing one, the questions above are the ones we would ask on your behalf.",
           },
         ],
       },
@@ -389,14 +389,14 @@ export const whitePapers: WhitePaper[] = [
             rows: [
               { label: "Base salary", value: "By role and location" },
               { label: "Employment on-costs", value: "Typically 25% to 35%" },
-              { label: "Software and licences", value: "ERP seat, EDI fees" },
+              { label: "Software and licenses", value: "ERP seat, EDI fees" },
               { label: "Space and equipment", value: "Desk, hardware, telephony" },
               { label: "Recruitment", value: "Spread over expected tenure" },
             ],
           },
           {
             kind: "para",
-            text: "On-costs are the first thing left out. Payroll taxes, health cover, paid leave and the employer's share of everything else commonly add a quarter to a third on top of base salary in the US. A $65,000 order entry role is closer to $85,000 before anyone has bought a licence for them to use.",
+            text: "On-costs are the first thing left out. Payroll taxes, health cover, paid leave and the employer's share of everything else commonly add a quarter to a third on top of base salary in the US. A $65,000 order entry role is closer to $85,000 before anyone has bought a license for them to use.",
           },
           {
             kind: "para",
@@ -416,7 +416,7 @@ export const whitePapers: WhitePaper[] = [
           { kind: "subhead", text: "Time to competence" },
           {
             kind: "para",
-            text: "An order entry or EDI role in apparel is not learned in a week. Style, colour and size structures, retailer quirks, routing rules, and the fifty small conventions your business runs on take months to absorb. Three to six months to full productivity is normal. If your peak is four months away, hiring now is already tight.",
+            text: "An order entry or EDI role in this world is not learned in a week. Style, color and size structures, retailer quirks, routing rules, and the fifty small conventions your business runs on take months to absorb. Three to six months to full productivity is normal. If your peak is four months away, hiring now is already tight.",
           },
           { kind: "subhead", text: "Cover" },
           {
@@ -476,7 +476,7 @@ export const whitePapers: WhitePaper[] = [
           },
           {
             kind: "para",
-            text: "It works badly in three situations. When nobody on your side owns the relationship, decisions stall and the provider fills the silence with guesses. When a process genuinely lives in one person's head and has never been written down, moving it just relocates the risk. And when work needs constant judgement rather than consistent execution, an outside team will always be slower than the person sitting next to the merchandiser.",
+            text: "It works badly in three situations. When nobody on your side owns the relationship, decisions stall and the provider fills the silence with guesses. When a process genuinely lives in one person's head and has never been written down, moving it just relocates the risk. And when work needs constant judgment rather than consistent execution, an outside team will always be slower than the person sitting next to the merchandiser.",
           },
           {
             kind: "para",
@@ -516,7 +516,7 @@ export const whitePapers: WhitePaper[] = [
         blocks: [
           {
             kind: "para",
-            text: "Apparel volume has never been flat. Order intake clusters, ship windows cluster behind it, and month-end arrives on the same date regardless. For most importers the busiest ten weeks of the year carry two or three times the volume of a quiet week.",
+            text: "Import volume has never been flat. Order intake clusters, ship windows cluster behind it, and month-end arrives on the same date regardless. For most importers the busiest ten weeks of the year carry two or three times the volume of a quiet week.",
           },
           {
             kind: "para",
@@ -534,7 +534,7 @@ export const whitePapers: WhitePaper[] = [
           },
           {
             kind: "para",
-            text: "By the time the season ends, the cost of peak has been spread across deductions, late cash and a tired team, and none of it is labelled as the cost of peak.",
+            text: "By the time the season ends, the cost of peak has been spread across deductions, late cash and a tired team, and none of it is labeled as the cost of peak.",
           },
         ],
       },
@@ -556,10 +556,10 @@ export const whitePapers: WhitePaper[] = [
         id: "model",
         heading: "Building capacity you can flex",
         blocks: [
-          { kind: "subhead", text: "Separate routine from judgement" },
+          { kind: "subhead", text: "Separate routine from judgment" },
           {
             kind: "para",
-            text: "Go through the work and split it in two. Routine work follows a rule and produces the same answer whoever does it: order entry from an 850, invoice generation, label validation, cash application against a remittance. Judgement work needs context: which account gets the short supply, whether to push a ship date, how hard to argue a deduction. Routine work can move to a larger flexible team. Judgement work should stay close to the business.",
+            text: "Go through the work and split it in two. Routine work follows a rule and produces the same answer whoever does it: order entry from an 850, invoice generation, label validation, cash application against a remittance. Judgment work needs context: which account gets the short supply, whether to push a ship date, how hard to argue a deduction. Routine work can move to a larger flexible team. Judgment work should stay close to the business.",
           },
           { kind: "subhead", text: "Write the routine work down" },
           {
@@ -642,7 +642,7 @@ export const whitePapers: WhitePaper[] = [
   {
     slug: "factor-management",
     docRef: "CD-016",
-    title: "Factor Management Made Simple for Apparel Importers",
+    title: "Factor Management Made Simple for Importers and Wholesalers",
     summary:
       "Credit approvals, assignment and cash application, without the month-end scramble.",
     topic: "Finance",
@@ -651,6 +651,14 @@ export const whitePapers: WhitePaper[] = [
   },
 ];
 
+/**
+ * Everything user-facing reads from this list, not from `whitePapers`.
+ *
+ * Forthcoming entries stay in the content source on purpose: switching one on
+ * is a single field change (`status: "forthcoming"` -> `"available"`) plus its
+ * `sections`. Until then it is absent from the index, has no route, and its
+ * slug 404s.
+ */
 export const availablePapers = whitePapers.filter(
   (p) => p.status === "available",
 );
@@ -661,6 +669,3 @@ export const featuredPaper =
 export function getPaper(slug: string): WhitePaper | undefined {
   return whitePapers.find((p) => p.slug === slug);
 }
-
-/** Ordering used by the index and by previous/next on the detail pages. */
-export const orderedPapers = whitePapers;

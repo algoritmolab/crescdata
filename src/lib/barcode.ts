@@ -41,7 +41,7 @@ export type BarcodePattern = {
   width: number;
 };
 
-/** Bar widths in narrow units, weighted towards the thin end. */
+/** Bar widths in narrow units, weighted toward the thin end. */
 const WIDTHS = [1, 1, 1, 2, 2, 3, 4];
 
 /**

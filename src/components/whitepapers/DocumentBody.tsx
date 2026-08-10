@@ -1,7 +1,7 @@
 import type { Block, Section } from "@/content/whitepapers";
 
 /** Reading measure sits at roughly 68 characters. */
-const MEASURE = "max-w-[68ch]";
+const MEASURE = "max-w-prose";
 
 function Blocks({ blocks }: { blocks: Block[] }) {
   return (
@@ -48,7 +48,7 @@ function Blocks({ blocks }: { blocks: Block[] }) {
           case "checklist":
             return (
               <div key={i} className="mt-9 border border-rule bg-paper">
-                <p className="border-b border-rule px-5 py-3 font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+                <p className="border-b border-rule px-5 py-3 font-mono text-[10px] uppercase tracking-[0.2em] text-label">
                   {block.title}
                 </p>
                 <ul className="divide-y divide-rule">
@@ -71,7 +71,7 @@ function Blocks({ blocks }: { blocks: Block[] }) {
           case "table":
             return (
               <div key={i} className="mt-9 border border-rule">
-                <p className="border-b border-rule bg-paper px-5 py-3 font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+                <p className="border-b border-rule bg-paper px-5 py-3 font-mono text-[10px] uppercase tracking-[0.2em] text-label">
                   {block.title}
                 </p>
                 <dl className="divide-y divide-rule">
@@ -98,7 +98,7 @@ function Blocks({ blocks }: { blocks: Block[] }) {
                 key={i}
                 className="mt-11 border-y border-rule py-8 sm:grid sm:grid-cols-[100px_minmax(0,1fr)] sm:gap-8"
               >
-                <figcaption className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent-600">
+                <figcaption className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent-800">
                   {block.kicker}
                 </figcaption>
                 <blockquote className="mt-3 max-w-[54ch] font-display text-xl font-medium leading-[1.4] tracking-[-0.015em] text-navy sm:mt-0 sm:text-2xl">
@@ -131,7 +131,7 @@ export function DocumentBody({
             className="scroll-mt-28 font-display text-2xl font-semibold tracking-[-0.025em] text-navy sm:text-[1.9rem]"
           >
             {numbered && (
-              <span className="mr-3 font-mono text-base text-muted">
+              <span className="mr-3 font-mono text-base text-label">
                 {String(i + 1).padStart(2, "0")}
               </span>
             )}

@@ -28,7 +28,6 @@ const paths: Record<string, React.ReactNode> = {
       <path d="M2.5 20h19" />
     </>
   ),
-  arrow: <path d="M5 12h14M13 6l6 6-6 6" />,
 };
 
 export function Icon({

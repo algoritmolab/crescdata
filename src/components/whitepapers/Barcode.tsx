@@ -7,7 +7,7 @@ import { cn } from "@/lib/cn";
  * Decorative: the reference number it encodes is always shown as text
  * alongside it, so the bars themselves are hidden from assistive tech.
  *
- * Bars inherit `currentColor`, so a parent can recolour the whole strip on
+ * Bars inherit `currentColor`, so a parent can recolor the whole strip on
  * hover or focus. `stagger` walks the transition delay along the bars to give
  * a left-to-right sweep; the reduced-motion rule in globals.css cancels both
  * the duration and the delay.
@@ -77,7 +77,7 @@ export function BarcodeMark({
       <div style={{ height }} className={cn("w-full", barsClassName)}>
         <Barcode code={code} height={height} symbols={symbols} stagger={stagger} />
       </div>
-      <span className="mt-1.5 block font-mono text-[10px] uppercase tracking-[0.32em] text-muted">
+      <span className="mt-1.5 block font-mono text-[10px] uppercase tracking-[0.32em] text-label">
         {code}
       </span>
     </div>

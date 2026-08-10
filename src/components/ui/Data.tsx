@@ -6,7 +6,7 @@
 /** Uppercase mono label sitting above a value. */
 export function DataLabel({ children }: { children: React.ReactNode }) {
   return (
-    <span className="block font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+    <span className="block font-mono text-[10px] uppercase tracking-[0.2em] text-label">
       {children}
     </span>
   );

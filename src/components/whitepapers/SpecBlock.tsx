@@ -6,7 +6,7 @@ import { formatFiledDate, type WhitePaper } from "@/content/whitepapers";
  * The technical header of a document page: reference, mark, date, topic and
  * read time in ruled cells, with the audience note across the foot.
  *
- * The cell rules come from a rule-coloured background showing through 1px
+ * The cell rules come from a rule-colored background showing through 1px
  * gaps, so they stay correct at one, two and four columns without a pile of
  * per-breakpoint border classes.
  */

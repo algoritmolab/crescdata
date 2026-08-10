@@ -1,5 +1,6 @@
 import { Container } from "./Container";
 import { Button } from "./Button";
+import { ArrowIcon } from "./ArrowLink";
 
 /** Restrained blue band used to close a page. */
 export function CtaBand({
@@ -17,14 +18,17 @@ export function CtaBand({
     <section className="bg-brand-700">
       <Container className="py-14 sm:py-16">
         <div className="flex flex-col gap-7 lg:flex-row lg:items-center lg:justify-between">
-          <div className="max-w-xl">
+          <div className="max-w-3xl">
             <h2 className="font-display text-2xl font-semibold tracking-[-0.02em] text-white sm:text-3xl">
               {heading}
             </h2>
-            <p className="mt-3 leading-relaxed text-brand-50">{body}</p>
+            <p className="mt-3 max-w-[68ch] leading-relaxed text-brand-50">
+              {body}
+            </p>
           </div>
           <Button href={href} variant="onBrand" size="lg" className="shrink-0">
             {label}
+            <ArrowIcon />
           </Button>
         </div>
       </Container>
