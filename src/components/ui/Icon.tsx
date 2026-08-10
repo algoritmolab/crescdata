@@ -29,6 +29,20 @@ const paths: Record<string, React.ReactNode> = {
     </>
   ),
   arrow: <path d="M5 12h14M13 6l6 6-6 6" />,
+  document: (
+    <>
+      <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z" />
+      <path d="M14 3v5h5" />
+      <path d="M9 13h6M9 17h4" />
+    </>
+  ),
+  download: (
+    <>
+      <path d="M12 4v11" />
+      <path d="m8 11 4 4 4-4" />
+      <path d="M5 19h14" />
+    </>
+  ),
 };
 
 export function Icon({

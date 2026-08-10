@@ -27,6 +27,8 @@ export const navLinks: NavLink[] = [
   { label: "Home", href: "/" },
   { label: "Services", href: "/services" },
   { label: "About", href: "/about" },
+  { label: "Testimonials", href: "/testimonials" },
+  { label: "White Papers", href: "/whitepapers" },
   { label: "Careers", href: "/careers" },
   { label: "Contact", href: "/contact" },
 ];
@@ -207,3 +209,122 @@ export const clients = {
     },
   ] satisfies ClientLogo[],
 };
+
+/* -------------------------------------------------------- testimonials page */
+
+export type Testimonial = {
+  quote: string;
+  name: string;
+  role: string;
+  company: string;
+};
+
+export const testimonialsIntro = {
+  heading: "What our clients say",
+  intro:
+    "A few words from the apparel importers and brands we support every day.",
+} as const;
+
+/**
+ * PLACEHOLDER TESTIMONIALS — not real client quotes.
+ *
+ * These are illustrative copy standing in until approved quotes are collected.
+ * Replace each entry with a real, attributed testimonial before launch, and
+ * make sure written permission is on file for the name/company used.
+ */
+export const testimonials: Testimonial[] = [
+  {
+    quote:
+      "Cresc took our entire EDI and order processing off our hands. Chargebacks dropped and our team finally stopped firefighting during peak season.",
+    name: "Rebecca Alvarez",
+    role: "VP of Operations",
+    company: "Northfield Apparel Group",
+  },
+  {
+    quote:
+      "Their accounting team runs our AP, AR and month-end close like clockwork. Cleaner books at a fraction of what we spent in-house.",
+    name: "Daniel Osei",
+    role: "Chief Financial Officer",
+    company: "Meridian Import Co.",
+  },
+  {
+    quote:
+      "We scale up hard every autumn. Cresc flexes with us — no scramble to hire, no drop in accuracy.",
+    name: "Priya Nair",
+    role: "President",
+    company: "Coastline Brands",
+  },
+  {
+    quote:
+      "From purchase orders to shipment tracking and LC management, our import desk finally feels under control.",
+    name: "Mark Feldman",
+    role: "Supply Chain Manager",
+    company: "Harbor & Vine",
+  },
+  {
+    quote:
+      "Retailer compliance used to keep me up at night. Now it's just handled.",
+    name: "Tara Willis",
+    role: "Operations Director",
+    company: "Lyndon Textiles",
+  },
+];
+
+/* -------------------------------------------------------- white papers page */
+
+export type WhitePaper = {
+  title: string;
+  summary: string;
+  /**
+   * Path to the PDF in public/, e.g. "/whitepapers/chargebacks.pdf".
+   * Leave as null while the file does not exist — the card then renders a
+   * disabled "Coming soon" button instead of a download link.
+   */
+  file: string | null;
+};
+
+export const whitePapersIntro = {
+  heading: "White papers & insights",
+  intro:
+    "Practical guidance on running a leaner, more accurate apparel supply chain back office.",
+} as const;
+
+/**
+ * PLACEHOLDER WHITE PAPERS — the PDFs do not exist yet.
+ *
+ * Every entry has `file: null`, so each card shows a disabled "Coming soon"
+ * button. To publish one: drop the PDF in public/whitepapers/ and set `file`
+ * to its path. No component changes needed.
+ */
+export const whitePapers: WhitePaper[] = [
+  {
+    title: "The Hidden Cost of Retailer Chargebacks — and How to Cut Them",
+    summary:
+      "Where apparel importers lose margin to compliance errors, and a practical framework to reduce it.",
+    file: null,
+  },
+  {
+    title: "EDI Without the Headaches: A Buyer's Guide for Apparel Importers",
+    summary:
+      "What 850/810/856 really require, and how to keep documents clean at scale.",
+    file: null,
+  },
+  {
+    title: "Building a Back Office That Scales With Your Season",
+    summary:
+      "How to handle demand peaks without over-hiring or sacrificing accuracy.",
+    file: null,
+  },
+  {
+    title: "In-House vs Outsourced Back Office: A Cost Breakdown",
+    summary:
+      "A clear-eyed comparison of staffing, systems and error costs.",
+    file: null,
+  },
+  {
+    title: "Import Management 101: POs, Shipments and Letters of Credit",
+    summary:
+      "A back-to-basics guide to a tightly run import desk.",
+    file: null,
+  },
+];

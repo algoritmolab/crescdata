@@ -29,18 +29,16 @@ export function Header() {
             />
           </Link>
 
-          {/* Desktop nav */}
-          <nav
-            aria-label="Main"
-            className="hidden items-center gap-1 lg:flex"
-          >
+          {/* Desktop nav. Seven links plus the CTA is tight at 1024px, so the
+              links run at 13px / narrow padding and open up from xl. */}
+          <nav aria-label="Main" className="hidden items-center lg:flex">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 aria-current={isActive(link.href) ? "page" : undefined}
                 className={cn(
-                  "rounded-md px-3 py-2 text-sm font-medium transition-colors",
+                  "whitespace-nowrap rounded-md px-2 py-2 text-[13px] font-medium transition-colors xl:px-3 xl:text-sm",
                   isActive(link.href)
                     ? "text-brand-700"
                     : "text-ink-soft hover:text-brand-700",
@@ -49,7 +47,7 @@ export function Header() {
                 {link.label}
               </Link>
             ))}
-            <Button href="/contact" className="ml-3">
+            <Button href="/contact" className="ml-2 whitespace-nowrap xl:ml-4">
               Get in touch
             </Button>
           </nav>
