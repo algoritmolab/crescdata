@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { cn } from "@/lib/cn";
 
-type Variant = "primary" | "secondary" | "onDark" | "onAccent";
+type Variant = "primary" | "secondary" | "onBrand";
 type Size = "md" | "lg";
 
 const base =
@@ -9,18 +9,15 @@ const base =
   "hover:-translate-y-0.5 active:translate-y-0";
 
 const variants: Record<Variant, string> = {
-  /** Amber accent — the main call to action. */
+  /** Brand blue — the default call to action everywhere on the site. */
   primary:
-    "bg-accent-500 text-brand-950 shadow-sm hover:bg-accent-400 hover:shadow-md",
+    "bg-brand-600 text-white shadow-sm hover:bg-brand-700 hover:shadow-md",
   /** Quiet outline for use alongside a primary button on light backgrounds. */
   secondary:
-    "border border-hairline bg-surface text-brand-800 hover:border-brand-300 hover:bg-brand-50",
-  /** Outline for use on the deep teal band. */
-  onDark:
-    "border border-white/30 text-white hover:border-white/60 hover:bg-white/10",
-  /** Solid teal — reads as the primary action on the amber CTA band. */
-  onAccent:
-    "bg-brand-800 text-white shadow-sm hover:bg-brand-900 hover:shadow-md",
+    "border border-hairline bg-surface text-brand-700 hover:border-brand-300 hover:bg-brand-50",
+  /** Solid white — reads as the primary action on the deep blue CTA band. */
+  onBrand:
+    "bg-white text-brand-700 shadow-sm hover:bg-brand-50 hover:shadow-md",
 };
 
 const sizes: Record<Size, string> = {

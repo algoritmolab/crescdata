@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { site } from "@/content/site";
+import { logo, site } from "@/content/site";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -44,11 +44,23 @@ export const metadata: Metadata = {
     description,
     url: site.url,
     locale: "en_US",
+    images: [
+      {
+        url: logo.src,
+        width: logo.width,
+        height: logo.height,
+        alt: site.name,
+      },
+    ],
   },
   twitter: {
-    card: "summary_large_image",
+    // The logo is a wide, short wordmark, so a summary card frames it better
+    // than a large image card. Swap to "summary_large_image" once we have a
+    // purpose-built 1200x630 social image.
+    card: "summary",
     title,
     description,
+    images: [logo.src],
   },
   robots: {
     index: true,

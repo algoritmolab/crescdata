@@ -1,13 +1,12 @@
 import { cn } from "@/lib/cn";
 import { Container } from "./Container";
 
-type Tone = "default" | "subtle" | "brand" | "accent";
+type Tone = "default" | "subtle" | "brand";
 
 const tones: Record<Tone, string> = {
   default: "bg-surface",
   subtle: "bg-surface-subtle",
   brand: "bg-brand-800 text-white",
-  accent: "bg-accent-500 text-brand-950",
 };
 
 /** Vertical rhythm wrapper. Keeps section spacing identical across pages. */
@@ -58,8 +57,9 @@ export function SectionHeading({
       {eyebrow && (
         <p
           className={cn(
+            // Orange eyebrow — one of the small, deliberate accent moments.
             "text-xs font-semibold uppercase tracking-[0.14em]",
-            onDark ? "text-accent-300" : "text-brand-600",
+            onDark ? "text-accent-300" : "text-accent-600",
           )}
         >
           {eyebrow}
@@ -77,7 +77,7 @@ export function SectionHeading({
         <p
           className={cn(
             "mt-4 text-lg leading-relaxed",
-            onDark ? "text-brand-100" : "text-ink-soft",
+            onDark ? "text-brand-50" : "text-ink-soft",
           )}
         >
           {intro}

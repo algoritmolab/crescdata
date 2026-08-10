@@ -32,7 +32,7 @@ export function ServicesSummary() {
             <p className="mt-2 flex-1 text-sm leading-relaxed text-ink-soft">
               {service.body}
             </p>
-            <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-700">
+            <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600">
               Learn more
               <Icon
                 name="arrow"

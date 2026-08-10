@@ -5,7 +5,7 @@ import { navLinks, offices, site, type Office } from "@/content/site";
 function OfficeCard({ office }: { office: Office }) {
   return (
     <div>
-      <p className="text-xs font-semibold uppercase tracking-[0.14em] text-accent-300">
+      <p className="text-xs font-semibold uppercase tracking-[0.14em] text-accent-400">
         {office.region}
       </p>
       <p className="mt-2 text-sm font-semibold text-white">
@@ -25,7 +25,7 @@ function OfficeCard({ office }: { office: Office }) {
             <p>
               <a
                 href={`tel:${office.phone.replace(/[^+\d]/g, "")}`}
-                className="text-brand-100 transition-colors hover:text-accent-300"
+                className="text-brand-100 transition-colors hover:text-accent-400"
               >
                 {office.phone}
               </a>
@@ -35,7 +35,7 @@ function OfficeCard({ office }: { office: Office }) {
             <p>
               <a
                 href={`mailto:${office.email}`}
-                className="text-brand-100 transition-colors hover:text-accent-300"
+                className="text-brand-100 transition-colors hover:text-accent-400"
               >
                 {office.email}
               </a>
@@ -51,7 +51,7 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-brand-900 text-white">
+    <footer className="bg-brand-950 text-white">
       <Container className="py-16 sm:py-20">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {offices.map((office) => (
@@ -67,7 +67,7 @@ export function Footer() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-sm text-brand-100 transition-colors hover:text-accent-300"
+                  className="text-sm text-brand-100 transition-colors hover:text-accent-400"
                 >
                   {link.label}
                 </Link>

@@ -4,6 +4,13 @@
  * details only ever need changing in one place.
  */
 
+import type { StaticImageData } from "next/image";
+import crescLogo from "../../public/cresc_logo.png";
+import suttonLogo from "../../public/sutton_logo.webp";
+import bluestoneLogo from "../../public/bluestone_logo.png";
+
+export const logo = crescLogo;
+
 export const site = {
   name: "Cresc Datasoft",
   tagline: "Supply chain back office for apparel importers",
@@ -168,27 +175,35 @@ export const finalCta = {
 } as const;
 
 /**
- * PROOF SECTION — placeholder content.
+ * CLIENT LOGO STRIP.
  *
- * Flip `enabled` to false to hide the whole section (no other edits needed).
- * To go live: replace `logos` with real client names (or swap the placeholder
- * boxes in components/home/Proof.tsx for <Image> logos) and fill in the
- * `testimonial` fields with a real quote.
+ * To add a client: drop the file in public/, import it at the top of this
+ * file and push another entry. The strip re-flows automatically.
+ *
+ * `heightClass` optically balances logos of different shapes: Sutton is a
+ * full-bleed square tile so it reads large at a small height, while
+ * Bluestone's artwork sits inside heavy internal padding and needs a taller
+ * box to match it.
  */
-export const proof = {
+export type ClientLogo = {
+  src: StaticImageData;
+  alt: string;
+  heightClass: string;
+};
+
+export const clients = {
   enabled: true,
   heading: "Trusted by apparel brands and importers",
   logos: [
-    "Client logo",
-    "Client logo",
-    "Client logo",
-    "Client logo",
-    "Client logo",
-  ],
-  testimonial: {
-    quote:
-      "Placeholder — a short client quote will go here, describing the results they saw after moving their back office to Cresc Datasoft.",
-    author: "Name, Title",
-    company: "Company name",
-  },
-} as const;
+    {
+      src: suttonLogo,
+      alt: "Sutton Home Fashions",
+      heightClass: "h-14 sm:h-16",
+    },
+    {
+      src: bluestoneLogo,
+      alt: "Bluestone",
+      heightClass: "h-20 sm:h-24",
+    },
+  ] satisfies ClientLogo[],
+};

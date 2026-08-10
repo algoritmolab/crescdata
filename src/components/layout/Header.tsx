@@ -1,11 +1,12 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
-import { navLinks, site } from "@/content/site";
+import { logo, navLinks, site } from "@/content/site";
 import { cn } from "@/lib/cn";
 
 export function Header() {
@@ -19,11 +20,13 @@ export function Header() {
     <header className="sticky top-0 z-50 border-b border-hairline bg-surface/85 backdrop-blur-md">
       <Container>
         <div className="flex h-16 items-center justify-between gap-4 sm:h-20">
-          <Link
-            href="/"
-            className="text-lg font-semibold tracking-tight text-brand-800 sm:text-xl"
-          >
-            {site.name}
+          <Link href="/" className="shrink-0" aria-label={`${site.name} home`}>
+            <Image
+              src={logo}
+              alt={site.name}
+              priority
+              className="h-8 w-auto sm:h-9"
+            />
           </Link>
 
           {/* Desktop nav */}
@@ -39,8 +42,8 @@ export function Header() {
                 className={cn(
                   "rounded-md px-3 py-2 text-sm font-medium transition-colors",
                   isActive(link.href)
-                    ? "text-brand-800"
-                    : "text-ink-soft hover:text-brand-800",
+                    ? "text-brand-700"
+                    : "text-ink-soft hover:text-brand-700",
                 )}
               >
                 {link.label}
@@ -58,7 +61,7 @@ export function Header() {
             aria-expanded={open}
             aria-controls="mobile-nav"
             aria-label={open ? "Close menu" : "Open menu"}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-hairline text-brand-800 transition-colors hover:bg-brand-50 lg:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-hairline text-brand-700 transition-colors hover:bg-brand-50 lg:hidden"
           >
             <svg
               viewBox="0 0 24 24"
@@ -96,8 +99,8 @@ export function Header() {
                   className={cn(
                     "rounded-md px-3 py-3 text-base font-medium transition-colors",
                     isActive(link.href)
-                      ? "bg-brand-50 text-brand-800"
-                      : "text-ink-soft hover:bg-surface-subtle hover:text-brand-800",
+                      ? "bg-brand-50 text-brand-700"
+                      : "text-ink-soft hover:bg-surface-subtle hover:text-brand-700",
                   )}
                 >
                   {link.label}

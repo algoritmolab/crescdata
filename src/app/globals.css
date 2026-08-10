@@ -3,34 +3,38 @@
 /* ---------------------------------------------------------------------------
    Design tokens
    Every colour, font and motion value used across the site is declared here.
-   Tailwind v4 turns each `--color-*` entry into utilities (bg-brand-800,
+   Tailwind v4 turns each `--color-*` entry into utilities (bg-brand-600,
    text-accent-500, border-hairline, ...) so pages never hard-code hex values.
+
+   Brand system: BLUE primary, ORANGE accent.
+   - Buttons, links and interactive states use `brand-*`.
+   - `accent-*` is reserved for small highlights: eyebrows, icons, rules.
 --------------------------------------------------------------------------- */
 @theme {
-  /* Brand — deep teal / petrol blue. brand-800 (#0E4C4C) is the primary. */
-  --color-brand-50: #f0f8f7;
-  --color-brand-100: #d9edec;
-  --color-brand-200: #b5dbd9;
-  --color-brand-300: #85c1bf;
-  --color-brand-400: #52a19f;
-  --color-brand-500: #348583;
-  --color-brand-600: #276b6a;
-  --color-brand-700: #16605f;
-  --color-brand-800: #0e4c4c;
-  --color-brand-900: #0d3c3c;
-  --color-brand-950: #062626;
+  /* Primary blue. brand-600 (#1B75BC) is the main brand colour. */
+  --color-brand-50: #eff8fd;
+  --color-brand-100: #dbeefb;
+  --color-brand-200: #bfe1f8;
+  --color-brand-300: #93cef3;
+  --color-brand-400: #5fb2e9;
+  --color-brand-500: #3b95d9;
+  --color-brand-600: #1b75bc;
+  --color-brand-700: #175e99;
+  --color-brand-800: #17507f;
+  --color-brand-900: #143f66;
+  --color-brand-950: #0c2942;
 
-  /* Accent — warm amber. accent-500 (#F59E0B) is the primary. */
-  --color-accent-50: #fffbeb;
-  --color-accent-100: #fef3c7;
-  --color-accent-200: #fde68a;
-  --color-accent-300: #fcd34d;
-  --color-accent-400: #fbbf24;
-  --color-accent-500: #f59e0b;
-  --color-accent-600: #d97706;
-  --color-accent-700: #b45309;
-  --color-accent-800: #92400e;
-  --color-accent-900: #78350f;
+  /* Accent orange. accent-500 (#F7941E) is the highlight colour. */
+  --color-accent-50: #fff8ed;
+  --color-accent-100: #ffefd4;
+  --color-accent-200: #ffdba8;
+  --color-accent-300: #fdc171;
+  --color-accent-400: #fba53c;
+  --color-accent-500: #f7941e;
+  --color-accent-600: #e87b0c;
+  --color-accent-700: #c05d0c;
+  --color-accent-800: #984911;
+  --color-accent-900: #7a3d11;
 
   /* Semantic neutrals (slate-based) */
   --color-ink: #0f172a;
@@ -84,7 +88,7 @@
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-accent-500);
+    outline: 2px solid var(--color-brand-600);
     outline-offset: 2px;
     border-radius: 2px;
   }
