@@ -1,0 +1,120 @@
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useState } from "react";
+import { Container } from "@/components/ui/Container";
+import { Button } from "@/components/ui/Button";
+import { navLinks, site } from "@/content/site";
+import { cn } from "@/lib/cn";
+
+export function Header() {
+  const pathname = usePathname();
+  const [open, setOpen] = useState(false);
+
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname.startsWith(href);
+
+  return (
+    <header className="sticky top-0 z-50 border-b border-hairline bg-surface/85 backdrop-blur-md">
+      <Container>
+        <div className="flex h-16 items-center justify-between gap-4 sm:h-20">
+          <Link
+            href="/"
+            className="text-lg font-semibold tracking-tight text-brand-800 sm:text-xl"
+          >
+            {site.name}
+          </Link>
+
+          {/* Desktop nav */}
+          <nav
+            aria-label="Main"
+            className="hidden items-center gap-1 lg:flex"
+          >
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                aria-current={isActive(link.href) ? "page" : undefined}
+                className={cn(
+                  "rounded-md px-3 py-2 text-sm font-medium transition-colors",
+                  isActive(link.href)
+                    ? "text-brand-800"
+                    : "text-ink-soft hover:text-brand-800",
+                )}
+              >
+                {link.label}
+              </Link>
+            ))}
+            <Button href="/contact" className="ml-3">
+              Get in touch
+            </Button>
+          </nav>
+
+          {/* Mobile toggle */}
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            aria-expanded={open}
+            aria-controls="mobile-nav"
+            aria-label={open ? "Close menu" : "Open menu"}
+            className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-hairline text-brand-800 transition-colors hover:bg-brand-50 lg:hidden"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={1.8}
+              strokeLinecap="round"
+              className="h-5 w-5"
+              aria-hidden="true"
+            >
+              {open ? (
+                <path d="M6 6l12 12M18 6 6 18" />
+              ) : (
+                <path d="M4 7h16M4 12h16M4 17h16" />
+              )}
+            </svg>
+          </button>
+        </div>
+      </Container>
+
+      {/* Mobile nav */}
+      {open && (
+        <div
+          id="mobile-nav"
+          className="border-t border-hairline bg-surface lg:hidden"
+        >
+          <Container>
+            <nav aria-label="Mobile" className="flex flex-col gap-1 py-4">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setOpen(false)}
+                  aria-current={isActive(link.href) ? "page" : undefined}
+                  className={cn(
+                    "rounded-md px-3 py-3 text-base font-medium transition-colors",
+                    isActive(link.href)
+                      ? "bg-brand-50 text-brand-800"
+                      : "text-ink-soft hover:bg-surface-subtle hover:text-brand-800",
+                  )}
+                >
+                  {link.label}
+                </Link>
+              ))}
+              <Button
+                href="/contact"
+                size="lg"
+                className="mt-3 w-full"
+                onClick={() => setOpen(false)}
+              >
+                Get in touch
+              </Button>
+            </nav>
+          </Container>
+        </div>
+      )}
+    </header>
+  );
+}
