@@ -4,7 +4,7 @@ import { clients } from "@/content/site";
 import { cn } from "@/lib/cn";
 
 /**
- * Client logo strip, plus the retail accounts line.
+ * Client logo strip.
  *
  * Each logo sits in its own white card so artwork with different backgrounds
  * reads consistently against the tinted section, and so a wide wordmark and a
@@ -54,15 +54,6 @@ export function Clients() {
             )}
           </div>
         ))}
-      </div>
-
-      <div className="mt-12 border-t border-hairline pt-8 text-center">
-        <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-label">
-          {clients.shipsToLabel}
-        </p>
-        <p className="mx-auto mt-3 max-w-2xl text-base leading-relaxed text-ink-soft">
-          {clients.shipsTo.join(" · ")}
-        </p>
       </div>
     </Section>
   );

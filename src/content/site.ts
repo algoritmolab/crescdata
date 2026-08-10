@@ -34,7 +34,9 @@ export const navLinks: NavLink[] = [
   { label: "Services", href: "/services" },
   { label: "Testimonials", href: "/testimonials" },
   { label: "White Papers", href: "/whitepapers" },
-  { label: "Case Studies", href: "/case-studies" },
+  // Hidden for now. The /case-studies route is still live and reachable by
+  // direct link — uncomment this line to put it back in the nav.
+  // { label: "Case Studies", href: "/case-studies" },
   { label: "Careers", href: "/careers" },
   { label: "Contact", href: "/contact" },
 ];
@@ -226,17 +228,6 @@ export const clients = {
       heightClass: "h-8 sm:h-9",
     },
   ] satisfies ClientLogo[],
-  /** Text only. We do not use retailer logos or brand marks anywhere. */
-  shipsToLabel: "Our clients ship to",
-  shipsTo: [
-    "Walmart",
-    "Target",
-    "Ross",
-    "Nordstrom",
-    "Macy's",
-    "Saks",
-    "Bloomingdale's",
-  ],
 };
 
 /* -------------------------------------------------------- testimonials page */
