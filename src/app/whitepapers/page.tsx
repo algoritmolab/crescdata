@@ -1,81 +1,86 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
-import { Section } from "@/components/ui/Section";
-import { Button, buttonClasses } from "@/components/ui/Button";
-import { Icon } from "@/components/ui/Icon";
-import { FinalCta } from "@/components/home/FinalCta";
-import { whitePapers, whitePapersIntro } from "@/content/site";
+import { ControlBar } from "@/components/ui/ControlBar";
+import { FeaturedDocument } from "@/components/whitepapers/FeaturedDocument";
+import { IndexRow } from "@/components/whitepapers/IndexRow";
+import {
+  availablePapers,
+  featuredPaper,
+  formatFiledDate,
+  orderedPapers,
+} from "@/content/whitepapers";
+import { logo, site } from "@/content/site";
+
+const description =
+  "Practical guidance on running a leaner, more accurate apparel supply chain back office: retailer chargebacks, EDI, back-office cost and seasonal capacity.";
 
 export const metadata: Metadata = {
-  // Root layout appends " — Cresc Datasoft" via the title template.
-  title: "White Papers & Insights",
-  description:
-    "Practical guidance on running a leaner, more accurate apparel supply chain back office — chargebacks, EDI, import management and back-office cost.",
+  title: "White Papers",
+  description,
+  openGraph: {
+    type: "website",
+    siteName: site.name,
+    title: `White Papers — ${site.name}`,
+    description,
+    url: `${site.url}/whitepapers`,
+    images: [
+      {
+        url: logo.src,
+        width: logo.width,
+        height: logo.height,
+        alt: site.name,
+      },
+    ],
+  },
 };
 
 export default function WhitePapersPage() {
+  const rest = orderedPapers.filter((p) => p.slug !== featuredPaper.slug);
+
+  // Derived from the data, so the control bar can never go stale.
+  const lastFiled = orderedPapers
+    .map((p) => p.filedDate)
+    .sort()
+    .at(-1);
+
   return (
-    <>
-      <Container className="py-16 sm:py-20">
-        <div className="max-w-2xl">
-          <h1 className="text-4xl font-semibold text-ink sm:text-5xl">
-            {whitePapersIntro.heading}
+    <div className="bg-paper">
+      <ControlBar
+        left={site.name}
+        centre="Document index"
+        right={lastFiled ? `Last filed ${formatFiledDate(lastFiled)}` : undefined}
+      />
+
+      <Container className="pt-14 pb-12 sm:pt-20 sm:pb-16">
+        <header className="max-w-3xl">
+          <h1 className="font-display text-5xl font-semibold leading-[0.94] tracking-[-0.045em] text-navy sm:text-7xl lg:text-8xl">
+            White papers
           </h1>
-          <p className="mt-5 text-lg leading-relaxed text-ink-soft">
-            {whitePapersIntro.intro}
+          <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
+            {orderedPapers.length} documents / {availablePapers.length}{" "}
+            available
           </p>
-        </div>
+          <p className="mt-7 max-w-xl text-lg leading-relaxed text-ink-soft">
+            Practical guidance on running a leaner, more accurate apparel supply
+            chain back office. Written by people who have done the work.
+          </p>
+        </header>
       </Container>
 
-      <Section tone="subtle" className="pt-0 sm:pt-0">
-        {/*
-          PLACEHOLDER WHITE PAPERS — no PDFs exist yet, so every entry in
-          content/site.ts has `file: null` and renders a disabled button.
-          To publish one: add the PDF under public/whitepapers/ and set the
-          entry's `file` to that path — the card becomes a real download.
-        */}
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {whitePapers.map((paper) => (
-            <article
-              key={paper.title}
-              className="flex flex-col rounded-2xl border border-hairline bg-surface p-7 transition duration-200 hover:border-brand-200 hover:shadow-lg hover:shadow-brand-900/5"
-            >
-              <span
-                aria-hidden="true"
-                className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-accent-50 text-accent-600"
-              >
-                <Icon name="document" className="h-5 w-5" />
-              </span>
+      <Container>
+        <FeaturedDocument paper={featuredPaper} />
+      </Container>
 
-              <h2 className="mt-5 text-lg font-semibold leading-snug text-ink">
-                {paper.title}
-              </h2>
-              <p className="mt-3 flex-1 text-sm leading-relaxed text-ink-soft">
-                {paper.summary}
-              </p>
-
-              <div className="mt-6">
-                {paper.file ? (
-                  <Button href={paper.file}>
-                    Download PDF
-                    <Icon name="download" className="h-4 w-4" />
-                  </Button>
-                ) : (
-                  <button
-                    type="button"
-                    disabled
-                    className={buttonClasses({ variant: "disabled" })}
-                  >
-                    Coming soon
-                  </button>
-                )}
-              </div>
-            </article>
+      <Container className="pt-16 pb-24 sm:pt-20 sm:pb-28">
+        <h2 className="border-b border-rule pb-3 font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+          All documents
+        </h2>
+        <ul>
+          {rest.map((paper) => (
+            <IndexRow key={paper.slug} paper={paper} />
           ))}
-        </div>
-      </Section>
-
-      <FinalCta />
-    </>
+        </ul>
+      </Container>
+    </div>
   );
 }

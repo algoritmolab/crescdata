@@ -45,8 +45,25 @@
   --color-surface-sunken: #f1f5f9;
   --color-hairline: #e2e8f0;
 
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  /* Document system ("the manifest") — used by /whitepapers.
+     Deep ink navy for headings, a cool paper ground, and a mid-grey rule
+     that is dark enough to read as a printed hairline on paper. */
+  --color-navy: #0b2545;
+  --color-paper: #edf1f6;
+  --color-rule: #c7d2de;
+
+  /* Service-area chip colours, used as the colour master on /testimonials.
+     Two are the brand blue and orange; the rest are muted enough to sit
+     beside them without competing. */
+  --color-chip-edi: #1b75bc;
+  --color-chip-accounting: #0f766e;
+  --color-chip-imports: #f7941e;
+  --color-chip-compliance: #a63a2a;
+  --color-chip-operations: #334e68;
+
+  --font-display: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-plex-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
 
   /* Motion — subtle entrance only. */
   --animate-fade-up: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
@@ -106,5 +123,8 @@
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
+    /* Staggered transitions (e.g. the barcode sweep) set per-element delays,
+       so those have to be cancelled too or the effect still plays. */
+    transition-delay: 0ms !important;
   }
 }

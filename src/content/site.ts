@@ -212,11 +212,23 @@ export const clients = {
 
 /* -------------------------------------------------------- testimonials page */
 
+/** Service areas, each with its own chip colour in the colour master. */
+export const serviceAreas = [
+  { key: "edi", label: "EDI", chip: "bg-chip-edi" },
+  { key: "accounting", label: "Accounting", chip: "bg-chip-accounting" },
+  { key: "imports", label: "Imports", chip: "bg-chip-imports" },
+  { key: "compliance", label: "Compliance", chip: "bg-chip-compliance" },
+  { key: "operations", label: "Operations", chip: "bg-chip-operations" },
+] as const;
+
+export type ServiceAreaKey = (typeof serviceAreas)[number]["key"];
+
 export type Testimonial = {
   quote: string;
   name: string;
   role: string;
   company: string;
+  area: ServiceAreaKey;
 };
 
 export const testimonialsIntro = {
@@ -235,96 +247,42 @@ export const testimonialsIntro = {
 export const testimonials: Testimonial[] = [
   {
     quote:
-      "Cresc took our entire EDI and order processing off our hands. Chargebacks dropped and our team finally stopped firefighting during peak season.",
+      "Cresc took over our EDI and order processing. Chargebacks dropped, and the team stopped firefighting its way through every peak season.",
     name: "Rebecca Alvarez",
     role: "VP of Operations",
     company: "Northfield Apparel Group",
+    area: "edi",
   },
   {
     quote:
-      "Their accounting team runs our AP, AR and month-end close like clockwork. Cleaner books at a fraction of what we spent in-house.",
+      "They run our AP, AR and month-end close like clockwork. Cleaner books, delivered earlier, at a fraction of what we were spending in-house.",
     name: "Daniel Osei",
     role: "Chief Financial Officer",
     company: "Meridian Import Co.",
+    area: "accounting",
   },
   {
     quote:
-      "We scale up hard every autumn. Cresc flexes with us — no scramble to hire, no drop in accuracy.",
+      "We scale hard every autumn. Cresc flexes with us: no scramble to hire, no overtime bill in January, and no drop in accuracy.",
     name: "Priya Nair",
     role: "President",
     company: "Coastline Brands",
+    area: "operations",
   },
   {
     quote:
-      "From purchase orders to shipment tracking and LC management, our import desk finally feels under control.",
+      "From purchase orders through shipment tracking to letter of credit management, our import desk finally feels like it is genuinely under control.",
     name: "Mark Feldman",
     role: "Supply Chain Manager",
     company: "Harbor & Vine",
+    area: "imports",
   },
   {
     quote:
-      "Retailer compliance used to keep me up at night. Now it's just handled.",
+      "Retailer compliance used to keep me up at night. Now it is simply handled, routing guide by routing guide, without me chasing anyone.",
     name: "Tara Willis",
     role: "Operations Director",
     company: "Lyndon Textiles",
-  },
-];
-
-/* -------------------------------------------------------- white papers page */
-
-export type WhitePaper = {
-  title: string;
-  summary: string;
-  /**
-   * Path to the PDF in public/, e.g. "/whitepapers/chargebacks.pdf".
-   * Leave as null while the file does not exist — the card then renders a
-   * disabled "Coming soon" button instead of a download link.
-   */
-  file: string | null;
-};
-
-export const whitePapersIntro = {
-  heading: "White papers & insights",
-  intro:
-    "Practical guidance on running a leaner, more accurate apparel supply chain back office.",
-} as const;
-
-/**
- * PLACEHOLDER WHITE PAPERS — the PDFs do not exist yet.
- *
- * Every entry has `file: null`, so each card shows a disabled "Coming soon"
- * button. To publish one: drop the PDF in public/whitepapers/ and set `file`
- * to its path. No component changes needed.
- */
-export const whitePapers: WhitePaper[] = [
-  {
-    title: "The Hidden Cost of Retailer Chargebacks — and How to Cut Them",
-    summary:
-      "Where apparel importers lose margin to compliance errors, and a practical framework to reduce it.",
-    file: null,
-  },
-  {
-    title: "EDI Without the Headaches: A Buyer's Guide for Apparel Importers",
-    summary:
-      "What 850/810/856 really require, and how to keep documents clean at scale.",
-    file: null,
-  },
-  {
-    title: "Building a Back Office That Scales With Your Season",
-    summary:
-      "How to handle demand peaks without over-hiring or sacrificing accuracy.",
-    file: null,
-  },
-  {
-    title: "In-House vs Outsourced Back Office: A Cost Breakdown",
-    summary:
-      "A clear-eyed comparison of staffing, systems and error costs.",
-    file: null,
-  },
-  {
-    title: "Import Management 101: POs, Shipments and Letters of Credit",
-    summary:
-      "A back-to-basics guide to a tightly run import desk.",
-    file: null,
+    area: "compliance",
   },
 ];
